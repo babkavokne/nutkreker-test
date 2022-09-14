@@ -1,35 +1,34 @@
-# natkreker
+# тестовое задание для ⭐NUTKREKER⭐
 
-This template should help get you started developing with Vue 3 in Vite.
+## Для запуска на локальной машине:
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### Устанавливаем зависимости
 
 ```sh
-npm install
+• npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Запускаем
 
 ```sh
-npm run dev
+• npm run dev
 ```
 
-### Compile and Minify for Production
+### Билд
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Notations:
 
-```sh
-npm run lint
-```
+• Не работают ссылки на постеры. При прямом переходе по ссылке выдаёт "country not allowed",
+  при переходе с VPN-ом предлагает купить данный домен. Возможно, это мои косяки, 
+  но я долго пытался и думаю, что это проблема на стороне хранилища.
+
+• Пользовался Pinia вместо Vuex (идёт дефолтом из коробки для Vue v3)
+
+• Собрано на Vite
+
+• Спасибо за предоставленную возможность и уделённое время!
+
