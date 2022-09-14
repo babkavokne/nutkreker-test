@@ -1,15 +1,13 @@
-import { ref, computed, watch } from 'vue'
-import { defineStore } from 'pinia'
-import { getAllFilms } from '../requests'
+import { ref, computed, watch } from "vue";
+import { defineStore } from "pinia";
+import { getAllFilms } from "../requests";
 
-export const useStore = defineStore('store', () => {
+export const useStore = defineStore("store", () => {
   const isLoading = ref(true);
   const films = ref([]);
-  const err = ref('');
+  const err = ref("");
 
-  const getAllFilmsFromStore = computed(function () {
-    return films.value;
-  });
+  const getAllFilmsFromStore = computed(() => films.value);
 
   const getFilmById = computed(() => id => films.value.find((el) => el.id == id));
 
@@ -26,7 +24,7 @@ export const useStore = defineStore('store', () => {
     await getAllFilms().then(res => {
       films.value = res.data;
       setLoading(false);
-      err.value = '';
+      err.value = "";
     });
   }
 

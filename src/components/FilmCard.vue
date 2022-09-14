@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { watch, onMounted, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   info: {
@@ -32,7 +32,7 @@ const props = defineProps({
 const duration = computed(() => {
   const str = props.info.collapse.duration[0];
   const filteredStr = str.split("").filter((el) => el !== ".").join("");
-  const finalStr = filteredStr.endsWith("н") ? filteredStr : filteredStr + ":00"
+  const finalStr = filteredStr.endsWith("н") ? filteredStr : filteredStr + ":00";
   return finalStr
 });
 </script>

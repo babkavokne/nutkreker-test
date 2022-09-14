@@ -1,21 +1,21 @@
 <template>
-  <div :class="['container', 'films']">
+  <div class="container films">
     <header>
       <h3>Фильмы</h3>
       <div class="selectors">
         <MyCheckbox v-for="(item, index) in sortType" :text="item.text" :id="item.value" :key="index"
-          :modelValue="item.checked" @update:model-value="ad" />
+          :modelValue="item.checked" @update:model-value="setSort" />
       </div>
     </header>
     <Loader v-if="store.isLoading" />
     <main v-else>
-      <FilmCard class="card" v-for="(film, index) in sortedFilms" :info="film" :key="film.id" />
+      <FilmCard class="card" v-for="film in sortedFilms" :info="film" :key="film.id" />
     </main>
   </div>
 </template>
 
 <script setup>
-import { onMounted, computed, ref, watch } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useStore } from "../store/index";
 import MyCheckbox from "../components/MyCheckbox.vue";
 import FilmCard from "../components/FilmCard.vue";
@@ -34,7 +34,7 @@ const sortType = ref([
   }
 ])
 
-function ad(e) {
+function setSort(e) {
   sortType.value.forEach(el => el.checked = e.id === el.value ? e.checked : false)
   currentSortType.value = sortType.value.find(el => el.checked === true)?.value ?? "";
 }
@@ -44,10 +44,10 @@ const currentSortType = ref("");
 const store = useStore();
 
 let sortedFilms = computed(() => {
-  const sortFilms = store.getAllFilmsFromStore.slice()
+  const sortFilms = store.getAllFilmsFromStore.slice();
   return sortFilms.sort((a, b) => {
-    const aValue = a[currentSortType.value]
-    const bValue = b[currentSortType.value]
+    const aValue = a[currentSortType.value];
+    const bValue = b[currentSortType.value];
     if (aValue < bValue) {
       return -1
     } else if (aValue > bValue) {
@@ -55,7 +55,7 @@ let sortedFilms = computed(() => {
     }
     return 0
   })
-})
+});
 
 onMounted(() => {
   store.getAllFilmsFromDB()

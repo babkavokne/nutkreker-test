@@ -1,5 +1,5 @@
 <template>
-  <div :class="['container', 'film']">
+  <div class="container film">
     <header>
       <BackLink />
     </header>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount, computed } from "vue";
+import { ref, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "../store/index";
 import { getFilm } from "../requests";
@@ -24,7 +24,7 @@ const route = useRoute();
 
 const store = useStore();
 
-const film = ref({})
+const film = ref({});
 
 onBeforeMount(async () => {
   store.setLoading(true)
@@ -38,18 +38,18 @@ onBeforeMount(async () => {
 
   } else {
 
-    const res = await getFilm(filmId)
+    const res = await getFilm(filmId);
 
     if (res) {
-
       film.value = res;
 
     } else {
 
-      store.setError('К сожалению, по вашему запросу ничего не найдено...')
+      store.setError('К сожалению, по вашему запросу ничего не найдено...');
       console.log(store.err);
 
     }
+
     store.setLoading(false);
   }
 });
