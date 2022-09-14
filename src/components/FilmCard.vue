@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="poster">
-      <img :src="props.info.poster" alt="Poster">
+      <!-- <img :src="props.info.poster" alt="Poster"> -->
     </div>
     <div class="info">
       <RouterLink :to="`/film/${props.info.id}`">

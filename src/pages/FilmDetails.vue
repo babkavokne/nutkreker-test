@@ -46,7 +46,6 @@ onBeforeMount(async () => {
     } else {
 
       store.setError('К сожалению, по вашему запросу ничего не найдено...');
-      console.log(store.err);
 
     }
 
