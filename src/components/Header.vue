@@ -11,8 +11,7 @@ header
   display: flex
   justify-content: center
   box-shadow: 0 8px 7px rgba(0, 0, 0, .28), 0 4px 4px rgba(0, 0, 0, .25)
-  background-color: #FA2828
-  opacity: .98
+  background-color: rgba(250, 40, 40, .98)
   h1
     margin: 36px 0 16px 0
     color: #000

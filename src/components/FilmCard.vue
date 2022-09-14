@@ -7,11 +7,11 @@
       <RouterLink :to="`/film/${props.info.id}`">
         <h2>{{props.info.title}}</h2>
       </RouterLink>
-      <div>{{props.info.year}}, {{props.info.genres?.join(', ')}}</div>
-      <div v-if="props.info.directors" class="director">режиссёр: {{props.info.directors.join(', ')}}</div>
-      <div v-if="props.info.actors" class="actors">актёры: <span>{{props.info.actors.join(', ')}}</span></div>
+      <div>{{props.info.year}}, {{props.info.genres?.join(", ")}}</div>
+      <div v-if="props.info.directors" class="director">режиссёр: {{props.info.directors.join(", ")}}</div>
+      <div v-if="props.info.actors" class="actors">актёры: <span>{{props.info.actors.join(", ")}}</span></div>
       <p v-if="props.info.description" class="description"><span>{{props.info.description}}</span></p>
-      <div v-if="props.info.collapse.duration" class="duration">
+      <div v-if="props.info.collapse?.duration" class="duration">
         {{duration}}
         <img src="../assets/icons/frame.svg" alt="Film frame">
       </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { watch, onMounted, computed } from 'vue'
+import { watch, onMounted, computed } from "vue";
 
 const props = defineProps({
   info: {
@@ -28,11 +28,11 @@ const props = defineProps({
     required: true
   }
 });
-console.log(props.info);
+
 const duration = computed(() => {
   const str = props.info.collapse.duration[0];
-  const filteredStr = str.split('').filter((el) => el !== '.').join('');
-  const finalStr = filteredStr.endsWith('н') ? filteredStr : filteredStr + ':00'
+  const filteredStr = str.split("").filter((el) => el !== ".").join("");
+  const finalStr = filteredStr.endsWith("н") ? filteredStr : filteredStr + ":00"
   return finalStr
 });
 </script>
@@ -71,7 +71,10 @@ const duration = computed(() => {
     margin-top: 8px
   .actors
     margin-top: 8px
+    display: flex
+    column-gap: 3px
     span
+      top: -3px
       font-size: 12px
       line-height: 16px
       text-transform: initial

@@ -1,12 +1,11 @@
 <template>
-  <input v-model="checked" class="checkbox" type="checkbox" :id="id" />
+  <input :checked="modelValue" @change="$emit('update:modelValue', $event.target)" class="checkbox"
+    type="checkbox" :id="id" />
   <label :for="id">{{text}}</label>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-
-const checked = ref(false);
+defineEmits(['update:modelValue']);
 
 defineProps({
   id: {
@@ -16,10 +15,14 @@ defineProps({
   text: {
     type: String,
     required: true
+  },
+  modelValue: {
+    type: Boolean,
+    required: true
   }
 });
 
-watch(checked, (newValue, oldValue) => console.log(1));
+
 </script>
 
 <style lang="sass" scoped>

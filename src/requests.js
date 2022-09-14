@@ -12,7 +12,7 @@ export async function getAllFilms() {
 export async function getFilm(id) {
   try {
     const film = await axios.get(`https://floating-sierra-20135.herokuapp.com/api/movie/${id}`);
-    return film.data;
+    return film.data.data;
   } catch (e) {
     throw new Error(e.message);
   }

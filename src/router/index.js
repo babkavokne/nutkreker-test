@@ -5,12 +5,15 @@ import FilmDetails from '../pages/FilmDetails.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-   {
-    path: '/', component: Films
-   },
-   {
-    path: '/film/:id', component: FilmDetails
-   }
+    {
+      path: '/', component: Films
+    },
+    {
+      path: '/film/:id', component: FilmDetails
+    },
+    {
+      path: '/:catchAll(.*)', component: Films
+    }
   ]
 })
 
